@@ -38,6 +38,11 @@ declare global {
       ZITADEL_CLIENT_ID?: string;
       ZITADEL_CLIENT_SECRET?: string;
       ZITADEL_ISSUER?: string;
+
+      // KEYCLOAK
+      KEYCLOAK_CLIENT_ID?: string;
+      KEYCLOAK_CLIENT_SECRET?: string;
+      KEYCLOAK_ISSUER?: string;
     }
   }
 }
@@ -85,6 +90,11 @@ export const getAuthConfig = () => {
       ZITADEL_CLIENT_ID: z.string().optional(),
       ZITADEL_CLIENT_SECRET: z.string().optional(),
       ZITADEL_ISSUER: z.string().optional(),
+
+      // KEYCLOAK
+      KEYCLOAK_CLIENT_ID: z.string().optional(),
+      KEYCLOAK_CLIENT_SECRET: z.string().optional(),
+      KEYCLOAK_ISSUER: z.string().optional(),
     },
 
     runtimeEnv: {
@@ -122,6 +132,11 @@ export const getAuthConfig = () => {
       ZITADEL_CLIENT_ID: process.env.ZITADEL_CLIENT_ID,
       ZITADEL_CLIENT_SECRET: process.env.ZITADEL_CLIENT_SECRET,
       ZITADEL_ISSUER: process.env.ZITADEL_ISSUER,
+
+      // KEYCLOAK
+      KEYCLOAK_CLIENT_ID:  process.env.KEYCLOAK_CLIENT_ID,
+      KEYCLOAK_CLIENT_SECRET:  process.env.KEYCLOAK_CLIENT_SECRET,
+      KEYCLOAK_ISSUER:  process.env.KEYCLOAK_ISSUER,
     },
   });
 };
