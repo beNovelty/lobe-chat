@@ -31,4 +31,9 @@ export interface TextToImagePayload {
    * @default vivid
    */
   style?: DallEImageStyle;
+
+  /**
+   * A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse
+   */
+  user?: string;
 }

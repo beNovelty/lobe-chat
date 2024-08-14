@@ -57,6 +57,9 @@ export const POST = checkAuth(async (req: Request, { params, jwtPayload }) => {
     // ============  2. create chat completion   ============ //
 
     const data = (await req.json()) as TextToImagePayload;
+    // add user field into data
+    // jwtPayload.sub is the user id from keycloak (or other provider)
+    data.user = jwtPayload.sub;
 
     const images = await agentRuntime.textToImage(data);
 

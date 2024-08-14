@@ -300,6 +300,7 @@ class ChatService {
 
     const traceHeader = createTraceHeader({ ...options?.trace });
 
+    // @note the lobe chat auth header is created here
     const headers = await createHeaderWithAuth({
       headers: { 'Content-Type': 'application/json', ...traceHeader },
       provider,

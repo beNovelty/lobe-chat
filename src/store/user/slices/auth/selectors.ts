@@ -30,6 +30,10 @@ export const userProfileSelectors = {
   username,
 };
 
+export const nextUserProfileSelectors = {
+  sub: (s: UserStore) => s.nextUser?.id
+}
+
 /**
  * 使用此方法可以兼容不需要登录鉴权的情况
  */

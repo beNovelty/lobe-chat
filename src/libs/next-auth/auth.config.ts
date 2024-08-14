@@ -25,6 +25,11 @@ export default {
       if (user?.id) {
         token.userId = user?.id;
       }
+      // user.providerAccountId is the keycloak (or other providers) user id
+      // need to store this in server session
+      if (user?.providerAccountId) {
+        token.providerAccountId = user?.providerAccountId;
+      }
       return token;
     },
     async session({ session, token, user }) {
@@ -33,7 +38,10 @@ export default {
         if (user) {
           session.user.id = user.id;
         } else {
-          session.user.id = (token.userId ?? session.user.id) as string;
+          // since we are using jwt session, user must be undefined, and token will be used
+          // token.userId is just a random uuid in browser's IndexDB, not the keycloak user id. It will change over time when the same user login multiple times.
+          // token.sub is the keycloak (or other provider's) user id
+          session.user.id = (token.providerAccountId ?? session.user.id) as string;
         }
       }
       return session;

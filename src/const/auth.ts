@@ -41,5 +41,10 @@ export interface JWTPayload {
    * in server db mode it's a user id
    */
   userId?: string;
+
+  /**
+   * the keycloak (or other provider) user id
+   */
+  sub?: string;
 }
 /* eslint-enable */

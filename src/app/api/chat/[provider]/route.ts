@@ -36,7 +36,13 @@ export const POST = checkAuth(async (req: Request, { params, jwtPayload, createR
       });
     }
 
-    return await agentRuntime.chat(data, { user: jwtPayload.userId, ...traceOptions });
+    // jwtPayload here stands for the X-lobe-chat-auth header
+    // jwtPayload.userId is just a random uuid in browser's IndexDB, not the keycloak user id.
+    // jwtPayload.sub is the keycloak (or other provider's) user id
+    // see src/services/_auth.ts function createAuthTokenWithPayload for details
+    
+    // user here stands for the "user" field in post request to OpenAI endpoint, which will be recognised as litellm end-user(=customer) id
+    return await agentRuntime.chat(data, { user: jwtPayload.sub, ...traceOptions });
   } catch (e) {
     const {
       errorType = ChatErrorType.InternalServerError,

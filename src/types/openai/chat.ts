@@ -93,6 +93,11 @@ export interface ChatStreamPayload {
    * @default 1
    */
   top_p?: number;
+
+  /**
+   * @title the end-user (also called customer) name in litellm namespace, this should be a unique id of the keycloak user, e.g. jwt.payload.sub
+   */
+  user?: string;
 }
 
 export interface ChatCompletionFunctions {

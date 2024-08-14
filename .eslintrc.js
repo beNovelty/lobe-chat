@@ -17,6 +17,8 @@ config.rules['unicorn/prefer-spread'] = 0;
 config.rules['unicorn/catch-error-name'] = 0;
 config.rules['unicorn/no-array-for-each'] = 0;
 config.rules['unicorn/prefer-number-properties'] = 0;
+// This rule will force you to sort object keys by alphabetical order, which is annoying.
+config.rules['sort-keys-fix/sort-keys-fix'] = 0;
 
 config.overrides = [
   {
