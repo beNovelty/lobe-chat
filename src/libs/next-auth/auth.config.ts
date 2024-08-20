@@ -19,6 +19,17 @@ export const initSSOProviders = () => {
 // Notice this is only an object, not a full Auth.js instance
 export default {
   callbacks: {
+    async signIn({ profile }) {
+      const isAllowedToSignIn = typeof profile?.email === 'string' && profile?.email !== '';
+      if (isAllowedToSignIn) {
+        return true
+      } else {
+        // Return false to display a default error message
+        return false
+        // Or you can return a URL to redirect to:
+        // return '/unauthorized'
+      }
+    },  
     // Note: Data processing order of callback: authorize --> jwt --> session
     async jwt({ token, user }) {
       // ref: https://authjs.dev/guides/extending-the-session#with-jwt
